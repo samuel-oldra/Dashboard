@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="pt-BR">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <SqlDataSource ComponentName="dashboardSqlDataSource1">
+      <Name>SQL Data Source 1</Name>
+      <Connection Name="localhost_AdventureWorks2012Connection" ProviderKey="MSSqlServer">
+        <Parameters>
+          <Parameter Name="server" Value="localhost" />
+          <Parameter Name="database" Value="AdventureWorks2012" />
+          <Parameter Name="useIntegratedSecurity" Value="True" />
+          <Parameter Name="read only" Value="1" />
+          <Parameter Name="generateConnectionHelper" Value="false" />
+          <Parameter Name="userid" Value="" />
+          <Parameter Name="password" Value="" />
+        </Parameters>
+      </Connection>
+      <Query Type="TableQuery" Name="Production_Product">
+        <Table Name="Production.Product">
+          <Column Name="ProductID" />
+          <Column Name="Name" />
+          <Column Name="ProductNumber" />
+          <Column Name="MakeFlag" />
+          <Column Name="FinishedGoodsFlag" />
+          <Column Name="Color" />
+          <Column Name="SafetyStockLevel" />
+          <Column Name="ReorderPoint" />
+          <Column Name="StandardCost" />
+          <Column Name="ListPrice" />
+          <Column Name="Size" />
+          <Column Name="SizeUnitMeasureCode" />
+          <Column Name="WeightUnitMeasureCode" />
+          <Column Name="Weight" />
+          <Column Name="DaysToManufacture" />
+          <Column Name="ProductLine" />
+          <Column Name="Class" />
+          <Column Name="Style" />
+          <Column Name="ProductSubcategoryID" />
+          <Column Name="ProductModelID" />
+          <Column Name="SellStartDate" />
+          <Column Name="SellEndDate" />
+          <Column Name="DiscontinuedDate" />
+          <Column Name="rowguid" />
+          <Column Name="ModifiedDate" />
+        </Table>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="SQL Data Source 1">
+          <View Name="Production_Product">
+            <Field Name="ProductID" Type="Int32" />
+            <Field Name="Name" Type="String" />
+            <Field Name="ProductNumber" Type="String" />
+            <Field Name="MakeFlag" Type="Boolean" />
+            <Field Name="FinishedGoodsFlag" Type="Boolean" />
+            <Field Name="Color" Type="String" />
+            <Field Name="SafetyStockLevel" Type="Int16" />
+            <Field Name="ReorderPoint" Type="Int16" />
+            <Field Name="StandardCost" Type="Decimal" />
+            <Field Name="ListPrice" Type="Decimal" />
+            <Field Name="Size" Type="String" />
+            <Field Name="SizeUnitMeasureCode" Type="String" />
+            <Field Name="WeightUnitMeasureCode" Type="String" />
+            <Field Name="Weight" Type="Decimal" />
+            <Field Name="DaysToManufacture" Type="Int32" />
+            <Field Name="ProductLine" Type="String" />
+            <Field Name="Class" Type="String" />
+            <Field Name="Style" Type="String" />
+            <Field Name="ProductSubcategoryID" Type="Int32" />
+            <Field Name="ProductModelID" Type="Int32" />
+            <Field Name="SellStartDate" Type="DateTime" />
+            <Field Name="SellEndDate" Type="DateTime" />
+            <Field Name="DiscontinuedDate" Type="DateTime" />
+            <Field Name="rowguid" Type="Guid" />
+            <Field Name="ModifiedDate" Type="DateTime" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="dashboardSqlDataSource1" DataMember="Production_Product">
+      <DataItems>
+        <Measure DataMember="StandardCost" UniqueName="DataItem0" />
+        <Dimension DataMember="ProductLine" UniqueName="DataItem1" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension UniqueName="DataItem1" />
+      </SeriesDimensions>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value UniqueName="DataItem0" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Pie ComponentName="pieDashboardItem1" Name="Pies 1" DataSource="dashboardSqlDataSource1" DataMember="Production_Product">
+      <DataItems>
+        <Measure DataMember="Class" SummaryType="Count" UniqueName="DataItem0" />
+        <Dimension DataMember="DaysToManufacture" UniqueName="DataItem1" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension UniqueName="DataItem1" />
+      </SeriesDimensions>
+      <Values>
+        <Value UniqueName="DataItem0" />
+      </Values>
+    </Pie>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="chartDashboardItem1" Weight="0.5" />
+      <LayoutItem DashboardItem="pieDashboardItem1" Weight="0.5" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>
